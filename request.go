@@ -175,7 +175,6 @@ func (r *Request) Do(ctx context.Context) (*http.Response, error) {
 	} else if len(r.form) > 0 && !toQuery {
 		body = strings.NewReader(r.form.Encode())
 	}
-
 	req, err = http.NewRequestWithContext(ctx, r.Method, r.target, body)
 	if err != nil {
 		return nil, err

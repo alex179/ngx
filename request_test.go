@@ -3,7 +3,7 @@ package ngx_test
 import (
 	"bytes"
 	"context"
-	"github.com/smartwalle/ngx"
+	"github.com/alex179/ngx"
 	"io"
 	"net/http"
 	"net/http/httptest"
