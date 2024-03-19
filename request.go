@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/sirupsen/logrus"
 )
 
 type ContentType string
@@ -175,6 +177,8 @@ func (r *Request) Do(ctx context.Context) (*http.Response, error) {
 	} else if len(r.form) > 0 && !toQuery {
 		body = strings.NewReader(r.form.Encode())
 	}
+
+	logrus.Infof("method:%s, target:%s, body:%s", r.Method, r.target, body)
 	req, err = http.NewRequestWithContext(ctx, r.Method, r.target, body)
 	if err != nil {
 		return nil, err
